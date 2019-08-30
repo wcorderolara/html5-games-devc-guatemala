@@ -2,6 +2,11 @@ const assets = require('./assets');
 import { Entity } from './entity';
 
 export class Monster extends Entity {
+    constructor() {
+        super();
+        this.yPosition = 25;
+    }
+
     load() {
         return assets.loadImage('../images/Green_Blob.png').then(img => {
             this.image = img;
@@ -9,10 +14,11 @@ export class Monster extends Entity {
     };
 
     draw(canvas) {
-        canvas.drawImage(this.image, 25, 25, 128, 128);
+        console.log(this.yPosition);
+        canvas.drawImage(this.image, 25, this.yPosition, 128, 128);
     }
 
     update() {
-        // Nothing yet;
+        this.yPosition = this.yPosition + 55;
     }
 }

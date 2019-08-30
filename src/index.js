@@ -9,16 +9,18 @@ const entities = [monster];
 
 Promise.all(
     entities.map(entity => entity.load())
-).then(
-    requestAnimationFrame(drawGame)
-)
+).then( () => {
+    requestAnimationFrame(gameLoop);
+});
 
-function drawGame() {
-    entities.forEach( entity => {
-        entity.load().then( () => {
-            entity.draw(gameCanvas);
-        })
-    })
+function gameLoop() {
+    entities.forEach(entity => {
+        entity.update();
+    });
+
+    entities.forEach(entity => {
+        entity.draw(gameCanvas);
+    });
+
+    requestAnimationFrame(gameLoop);
 }
-
-requestAnimationFrame(drawGame);
