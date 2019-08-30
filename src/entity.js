@@ -6,7 +6,7 @@ export class Entity {
     draw(_canvas) {
         throw new TypeError('Abstract class "Entity" cannot beinstantiated directly.');
     }
-    update() {
+    update(_elapsedSec) {
         throw new TypeError('Abstract class "Entity" cannot beinstantiated directly.');
     }
 }

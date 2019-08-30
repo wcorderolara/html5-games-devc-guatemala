@@ -14,11 +14,10 @@ export class Monster extends Entity {
     };
 
     draw(canvas) {
-        console.log(this.yPosition);
         canvas.drawImage(this.image, 25, this.yPosition, 128, 128);
     }
 
-    update() {
-        this.yPosition = this.yPosition + 55;
+    update(elapsedSec) {
+        this.yPosition = this.yPosition + 10 * elapsedSec;
     }
 }
