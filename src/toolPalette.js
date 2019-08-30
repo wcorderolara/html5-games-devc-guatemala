@@ -3,8 +3,9 @@ import { Entity } from './entity';
 import { InputHelper } from './inputHelper';
 
 export class ToolPalette extends Entity {
-    constructor(canvas) {
+    constructor(canvas, grid) {
         super();
+        this.grid = grid;
     
         this.isPlacingWall = false;
         this.wasMouseDown = false;
@@ -56,6 +57,10 @@ export class ToolPalette extends Entity {
             }
         }
         if (this.isPlacingWall && this.wasMouseDown && !InputHelper.instance.isMouseDown) {
+            this.grid.addWallPiece(
+                InputHelper.instance.mouseX,
+                InputHelper.instance.mouseY
+            );
             this.isPlacingWall = false;
         }
         this.wasMouseDown = InputHelper.instance.isMouseDown;

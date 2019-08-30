@@ -4,13 +4,14 @@ import { Monster } from './monster.js';
 import { Wall } from './wall.js';
 import { ToolPalette } from './toolPalette.js';
 import { InputHelper } from './inputHelper.js';
+import { GameplayGrid } from './gameplayGrid';
 
 const gameCanvas = new GameCanvas(document.getElementById('main-canvas'));
 new InputHelper(gameCanvas);
 
 const monster = new Monster();
-const wall = new Wall(25, 150);
-const entities = [monster, new ToolPalette(gameCanvas)];
+const grid = new GameplayGrid();
+const entities = [ monster, grid, new ToolPalette(gameCanvas, grid) ];
 let time = 0;
 
 Promise.all(
