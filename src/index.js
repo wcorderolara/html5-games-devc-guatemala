@@ -2,12 +2,13 @@ const assets = require('./assets.js');
 import { GameCanvas } from './canvas.js';
 import { Monster } from './monster.js';
 import { Wall } from './wall.js';
+import { ToolPalette } from './toolPalette.js';
 
 const gameCanvas = new GameCanvas(document.getElementById('main-canvas'));
 
 const monster = new Monster();
 const wall = new Wall(25, 150);
-const entities = [monster, wall];
+const entities = [monster, new ToolPalette()];
 let time = 0;
 
 Promise.all(
