@@ -4,7 +4,7 @@ import { Entity } from './entity';
 export class Monster extends Entity {
     constructor() {
         super();
-        this.yPosition = 25;
+        this.yPosition = 0;
     }
 
     load() {

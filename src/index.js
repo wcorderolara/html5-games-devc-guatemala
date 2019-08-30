@@ -17,7 +17,7 @@ function gameLoop() {
     entities.forEach(entity => {
         entity.update();
     });
-
+    gameCanvas.clear();
     entities.forEach(entity => {
         entity.draw(gameCanvas);
     });
