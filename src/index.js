@@ -5,6 +5,20 @@ import { Monster } from './monster.js';
 const gameCanvas = new GameCanvas(document.getElementById('main-canvas'));
 
 const monster = new Monster();
-monster.load().then( () => {
-    monster.draw(gameCanvas);
-})
+const entities = [monster];
+
+Promise.all(
+    entities.map(entity => entity.load())
+).then(
+    requestAnimationFrame(drawGame)
+)
+
+function drawGame() {
+    entities.forEach( entity => {
+        entity.load().then( () => {
+            entity.draw(gameCanvas);
+        })
+    })
+}
+
+requestAnimationFrame(drawGame);
