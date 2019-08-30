@@ -14,13 +14,16 @@ export class GameCanvas {
         this.context.fillRect(0, 0, this.canvasElement.clientWidth, this.canvasElement.clientHeight);
     }
 
-    drawImage(image, x, y, width, height) {
+    drawImage(image, x, y, width, height, scale = 1.0) {
+        const scaleWidth = width * scale;
+        const scaleHeight = height * scale;
+
         this.context.drawImage(
             image, 
-            x * SCREEN_VIEWPORT_RATIO, 
-            y * SCREEN_VIEWPORT_RATIO, 
-            width * SCREEN_VIEWPORT_RATIO, 
-            height * SCREEN_VIEWPORT_RATIO
+            (x - (scaleWidth - width) / 2) * SCREEN_VIEWPORT_RATIO,
+            (y - (scaleHeight - height) / 2) * SCREEN_VIEWPORT_RATIO,
+            scaleWidth * SCREEN_VIEWPORT_RATIO,
+            scaleHeight * SCREEN_VIEWPORT_RATIO
         );
     }
 
