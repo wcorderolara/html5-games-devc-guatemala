@@ -1,8 +1,10 @@
-const assets = require('./assets');
-import { GameCanvas } from './canvas';
+const assets = require('./assets.js');
+import { GameCanvas } from './canvas.js';
+import { Monster } from './monster.js';
 
 const gameCanvas = new GameCanvas(document.getElementById('main-canvas'));
 
-assets.loadImage('../images/Green_Blob.png').then( img => {
-    gameCanvas.drawImage(img, 25, 25, 128, 128);    
-});
+const monster = new Monster();
+monster.load().then( () => {
+    monster.draw(gameCanvas);
+})
